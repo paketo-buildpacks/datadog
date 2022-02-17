@@ -68,6 +68,6 @@ func testJavaAgent(t *testing.T, context spec.G, it spec.S) {
 		Expect(filepath.Join(layer.Path, "stub-datadog-agent.jar")).To(BeARegularFile())
 		Expect(layer.LaunchEnvironment["JAVA_TOOL_OPTIONS.delim"]).To(Equal(" "))
 		Expect(layer.LaunchEnvironment["JAVA_TOOL_OPTIONS.append"]).To(Equal(fmt.Sprintf("-javaagent:%s",
-			filepath.Join(layer.Path, "javaagent.jar"))))
+			filepath.Join(layer.Path, "stub-datadog-agent.jar"))))
 	})
 }
