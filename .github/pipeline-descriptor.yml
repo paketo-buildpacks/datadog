@@ -1,3 +1,29 @@
+github:
+  username: ${{ secrets.JAVA_GITHUB_USERNAME }}
+  token:    ${{ secrets.JAVA_GITHUB_TOKEN }}
+
 codeowners:
 - path:  "*"
   owner: "@paketo-buildpacks/java-buildpacks"
+
+package:
+  repository:     gcr.io/paketo-buildpacks/datadog
+  register:       true
+  registry_token: ${{ secrets.JAVA_GITHUB_TOKEN }}
+
+docker_credentials:
+- registry: gcr.io
+  username: _json_key
+  password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+
+dependencies:
+- id:   datadog-agent-java
+  uses: docker://ghcr.io/paketo-buildpacks/actions/maven-dependency:main
+  with:
+    uri:         https://repo1.maven.org/maven2
+    group_id:    com.datadoghq
+    artifact_id: dd-java-agent
+- id:   datadog-agent-nodejs
+  uses: docker://ghcr.io/paketo-buildpacks/actions/npm-dependency:main
+  with:
+    package: dd-trace
