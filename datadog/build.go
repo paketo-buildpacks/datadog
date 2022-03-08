@@ -44,10 +44,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 			return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 		}
 
-		ja, be := NewJavaAgent(agentDependency, dc)
-		ja.Logger = b.Logger
-		result.Layers = append(result.Layers, ja)
-		result.BOM.Entries = append(result.BOM.Entries, be)
+		result.Layers = append(result.Layers, NewJavaAgent(agentDependency, dc, b.Logger))
 	}
 
 	if _, ok, err := pr.Resolve("datadog-nodejs"); err != nil {
@@ -58,16 +55,13 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 			return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 		}
 
-		na, be := NewNodeJSAgent(context.Application.Path, context.Buildpack.Path, dep, dc)
-		na.Logger = b.Logger
-		result.Layers = append(result.Layers, na)
-		result.BOM.Entries = append(result.BOM.Entries, be)
+		result.Layers = append(result.Layers,
+			NewNodeJSAgent(context.Application.Path, context.Buildpack.Path, dep, dc, b.Logger))
 	}
 
-	h, be := libpak.NewHelperLayer(context.Buildpack, "properties")
+	h, _ := libpak.NewHelperLayer(context.Buildpack, "properties")
 	h.Logger = b.Logger
 	result.Layers = append(result.Layers, h)
-	result.BOM.Entries = append(result.BOM.Entries, be)
 
 	return result, nil
 }

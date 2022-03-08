@@ -29,14 +29,15 @@ type NodeJSAgent struct {
 	Logger           bard.Logger
 }
 
-func NewNodeJSAgent(applicationPath string, buildpackPath string, dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (NodeJSAgent, libcnb.BOMEntry) {
-	contributor, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{Launch: true})
+func NewNodeJSAgent(applicationPath string, buildpackPath string, dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger) NodeJSAgent {
+	contributor, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{Launch: true})
 	return NodeJSAgent{
 		ApplicationPath:  applicationPath,
 		BuildpackPath:    buildpackPath,
 		Executor:         effect.NewExecutor(),
 		LayerContributor: contributor,
-	}, entry
+		Logger:           logger,
+	}
 }
 
 func (n NodeJSAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {

@@ -8,6 +8,7 @@
 package datadog_test
 
 import (
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -16,6 +17,7 @@ import (
 	"github.com/buildpacks/libcnb"
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/libpak"
+	"github.com/paketo-buildpacks/libpak/bard"
 	"github.com/paketo-buildpacks/libpak/effect"
 	"github.com/paketo-buildpacks/libpak/effect/mocks"
 	"github.com/sclevine/spec"
@@ -62,7 +64,7 @@ func testNodeJSAgent(t *testing.T, context spec.G, it spec.S) {
 		}
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		n, _ := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc)
+		n := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc, bard.NewLogger(io.Discard))
 		n.Executor = executor
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
@@ -96,7 +98,7 @@ func testNodeJSAgent(t *testing.T, context spec.G, it spec.S) {
 		}
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		n, _ := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc)
+		n := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc, bard.NewLogger(io.Discard))
 		n.Executor = executor
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
@@ -121,7 +123,7 @@ func testNodeJSAgent(t *testing.T, context spec.G, it spec.S) {
 		}
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		n, _ := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc)
+		n := datadog.NewNodeJSAgent(ctx.Application.Path, ctx.Buildpack.Path, dep, dc, bard.NewLogger(io.Discard))
 		n.Executor = executor
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
