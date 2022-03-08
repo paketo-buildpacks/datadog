@@ -23,11 +23,11 @@ type JavaAgent struct {
 	Logger           bard.Logger
 }
 
-func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (JavaAgent, libcnb.BOMEntry) {
-	contrib, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
+func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger) JavaAgent {
+	contrib, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
 		Launch: true,
 	})
-	return JavaAgent{LayerContributor: contrib}, entry
+	return JavaAgent{LayerContributor: contrib, Logger: logger}
 }
 
 func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {

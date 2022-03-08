@@ -9,6 +9,7 @@ package datadog_test
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,6 +18,7 @@ import (
 	"github.com/buildpacks/libcnb"
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/libpak"
+	"github.com/paketo-buildpacks/libpak/bard"
 	"github.com/sclevine/spec"
 
 	"github.com/paketo-buildpacks/datadog/datadog"
@@ -52,11 +54,7 @@ func testJavaAgent(t *testing.T, context spec.G, it spec.S) {
 		}
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		j, bomEntry := datadog.NewJavaAgent(dep, dc)
-		Expect(bomEntry.Name).To(Equal("datadog-agent-java"))
-		Expect(bomEntry.Metadata["layer"]).To(Equal("datadog-agent-java"))
-		Expect(bomEntry.Launch).To(BeTrue())
-		Expect(bomEntry.Build).To(BeFalse())
+		j := datadog.NewJavaAgent(dep, dc, bard.NewLogger(io.Discard))
 
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
