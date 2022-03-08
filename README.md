@@ -4,14 +4,17 @@ The Paketo Datadog Buildpack is a Cloud Native Buildpack that contributes and co
 
 ## Behavior
 
-This buildpack will participate all the following conditions are met
+This buildpack will participate if all the following conditions are met
 
-* A binding exists with `type` of `Datadog`
+* The `$BP_DATADOG_ENABLED` is set to a truthy value (i.e. `true`, `t`, `1` ignoring case)
 
 The buildpack will do the following for Java applications:
 
 * Contributes the Datadog Java agent to a layer and configures `$JAVA_TOOL_OPTIONS` to use it
-* Transforms the contents of the binding secret to environment variables with the pattern `DD_<KEY>=<VALUE>`
+
+The buildpack will do the following for Node.js applications:
+
+* Contributes the Datadog Node.js agent to a layer
 
 ## Bindings
 
@@ -22,15 +25,6 @@ The buildpack optionally accepts the following bindings:
 | Key                   | Value   | Description                                                                                       |
 | --------------------- | ------- | ------------------------------------------------------------------------------------------------- |
 | `<dependency-digest>` | `<uri>` | If needed, the buildpack will fetch the dependency with digest `<dependency-digest>` from `<uri>` |
-
-### Type: `Datadog`
-
-This binding supports arbitrary key/value mappings. If you set a secret with the key `dd-foo=bar` or `dd.foo=bar` then the secret is mapped to an env variable of `DD_FOO=bar`. These environment variables are read by the Datadog Java Agent. The [full list of what's supported by the Java Agent is found here](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration).
-
-| Key      | Value   | Description                                                    |
-| -------- | ------- | -------------------------------------------------------------- |
-| `dd-foo` | `value` | The env variable `DD_FOO` will be set to the value of `value`. |
-
 
 ## License
 

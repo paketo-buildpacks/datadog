@@ -8,6 +8,7 @@
 package datadog_test
 
 import (
+	"os"
 	"testing"
 
 	"github.com/buildpacks/libcnb"
@@ -25,37 +26,49 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 		detect datadog.Detect
 	)
 
-	it("fails without service", func() {
-		Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{}))
+	context("BP_DATADOG_ENABLE is not set", func() {
+		it.Before(func() {
+			Expect(os.Unsetenv("BP_DATADOG_ENABLED")).To(Succeed())
+		})
+
+		it("fails without BP_DATADOG_ENABLED", func() {
+			Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{}))
+		})
 	})
 
-	it("passes with service", func() {
-		ctx.Platform.Bindings = libcnb.Bindings{
-			{Name: "test-service", Type: "Datadog"},
-		}
+	context("BP_DATADOG_ENABLE is set", func() {
+		it.Before(func() {
+			Expect(os.Setenv("BP_DATADOG_ENABLED", "true")).To(Succeed())
+		})
 
-		Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{
-			Pass: true,
-			Plans: []libcnb.BuildPlan{
-				{
-					Provides: []libcnb.BuildPlanProvide{
-						{Name: "datadog-java"},
+		it.After(func() {
+			Expect(os.Unsetenv("BP_DATADOG_ENABLED")).To(Succeed())
+		})
+
+		it("passes with BP_DATADOG_ENABLED set to true", func() {
+			Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{
+				Pass: true,
+				Plans: []libcnb.BuildPlan{
+					{
+						Provides: []libcnb.BuildPlanProvide{
+							{Name: "datadog-java"},
+						},
+						Requires: []libcnb.BuildPlanRequire{
+							{Name: "datadog-java"},
+							{Name: "jvm-application"},
+						},
 					},
-					Requires: []libcnb.BuildPlanRequire{
-						{Name: "datadog-java"},
-						{Name: "jvm-application"},
+					{
+						Provides: []libcnb.BuildPlanProvide{
+							{Name: "datadog-nodejs"},
+						},
+						Requires: []libcnb.BuildPlanRequire{
+							{Name: "datadog-nodejs"},
+							{Name: "node", Metadata: map[string]interface{}{"build": true}},
+						},
 					},
 				},
-				{
-					Provides: []libcnb.BuildPlanProvide{
-						{Name: "datadog-nodejs"},
-					},
-					Requires: []libcnb.BuildPlanRequire{
-						{Name: "datadog-nodejs"},
-						{Name: "node", Metadata: map[string]interface{}{"build": true}},
-					},
-				},
-			},
-		}))
+			}))
+		})
 	})
 }
