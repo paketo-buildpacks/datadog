@@ -59,9 +59,5 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 			NewNodeJSAgent(context.Application.Path, context.Buildpack.Path, dep, dc, b.Logger))
 	}
 
-	h, _ := libpak.NewHelperLayer(context.Buildpack, "properties")
-	h.Logger = b.Logger
-	result.Layers = append(result.Layers, h)
-
 	return result, nil
 }

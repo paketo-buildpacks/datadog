@@ -12,7 +12,6 @@ import (
 
 	"github.com/buildpacks/libcnb"
 	. "github.com/onsi/gomega"
-	"github.com/paketo-buildpacks/libpak"
 	"github.com/sclevine/spec"
 
 	"github.com/paketo-buildpacks/datadog/datadog"
@@ -42,10 +41,8 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(2))
+		Expect(result.Layers).To(HaveLen(1))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
-		Expect(result.Layers[1].Name()).To(Equal("helper"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 	})
 
 	it("contributes Java agent API >= 0.7", func() {
@@ -67,10 +64,8 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(2))
+		Expect(result.Layers).To(HaveLen(1))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
-		Expect(result.Layers[1].Name()).To(Equal("helper"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 	})
 
 	it("contributes NodeJS agent API <= 0.6", func() {
@@ -90,9 +85,8 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(2))
+		Expect(result.Layers).To(HaveLen(1))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-nodejs"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 	})
 
 	it("contributes NodeJS agent API >= 0.7", func() {
@@ -114,8 +108,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(2))
+		Expect(result.Layers).To(HaveLen(1))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-nodejs"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 	})
 }
