@@ -28,8 +28,14 @@ api = "0.7"
     uri = "https://github.com/paketo-buildpacks/maven/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml"]
+  include-files = ["LICENSE", "README.md", "bin/build", "bin/detect", "bin/main", "buildpack.toml"]
   pre-package = "scripts/build.sh"
+
+  [[metadata.configurations]]
+    build = true
+    default = "false"
+    description = "enable the Datadog Java Trace Agent"
+    name = "BP_DATADOG_ENABLED"
 
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:datadoghq:java-agent:0.96.0:*:*:*:*:*:*:*"]
