@@ -14,7 +14,8 @@ The buildpack will do the following for Java applications:
 
 The buildpack will do the following for Node.js applications:
 
-* Contributes the Datadog Node.js agent to a layer
+* Contributes the Datadog Node.js trace agent to a layer
+* Require the trace agent, if it's not present
 
 ## Bindings
 
