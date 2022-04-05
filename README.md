@@ -17,6 +17,12 @@ The buildpack will do the following for Node.js applications:
 * Contributes the Datadog Node.js trace agent to a layer
 * Require the trace agent, if it's not present
 
+## Usage
+
+Instructions for using the buildpack can be found at the links below:
+
+ - [Running on Docker](docs/run-on-docker.md)
+
 ## Bindings
 
 The buildpack optionally accepts the following bindings:
