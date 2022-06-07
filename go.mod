@@ -7,7 +7,7 @@ require (
 	github.com/onsi/gomega v1.19.0
 	github.com/paketo-buildpacks/libpak v1.60.1
 	github.com/sclevine/spec v1.4.0
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.7.2
 )
 
 require (
@@ -27,5 +27,5 @@ require (
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
