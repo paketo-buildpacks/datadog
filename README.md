@@ -1,6 +1,6 @@
 # `gcr.io/paketo-buildpacks/datadog`
 
-The Paketo Datadog Buildpack is a Cloud Native Buildpack that contributes and configures the Datadog Agent.
+The Paketo Buildpack for Datadog is a Cloud Native Buildpack that contributes and configures the Datadog Agent.
 
 ## Behavior
 
