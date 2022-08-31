@@ -19,7 +19,7 @@ api = "0.7"
   homepage = "https://github.com/paketo-buildpacks/datadog"
   id = "paketo-buildpacks/datadog"
   keywords = ["java"]
-  name = "Paketo Datadog Buildpack"
+  name = "Paketo Buildpack for Datadog"
   sbom-formats = ["application/vnd.syft+json", "application/vnd.cyclonedx+json"]
   version = "{{.version}}"
 
