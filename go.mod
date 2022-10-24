@@ -7,7 +7,7 @@ require (
 	github.com/onsi/gomega v1.22.1
 	github.com/paketo-buildpacks/libpak v1.63.0
 	github.com/sclevine/spec v1.4.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 )
 
 require (
