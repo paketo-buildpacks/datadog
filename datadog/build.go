@@ -45,6 +45,11 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		}
 
 		result.Layers = append(result.Layers, NewJavaAgent(agentDependency, dc, b.Logger))
+
+		h, be := libpak.NewHelperLayer(context.Buildpack, "datadogToggle")
+		h.Logger = b.Logger
+		result.Layers = append(result.Layers, h)
+		result.BOM.Entries = append(result.BOM.Entries, be)
 	}
 
 	if _, ok, err := pr.Resolve("datadog-nodejs"); err != nil {
