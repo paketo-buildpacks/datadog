@@ -72,4 +72,33 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 			}))
 		})
 	})
+
+	context("BP_DATADOG_ENABLED and BP_NATIVE_IMAGE are both enabled", func() {
+		it.Before(func() {
+			Expect(os.Setenv("BP_DATADOG_ENABLED", "true")).To(Succeed())
+			Expect(os.Setenv("BP_NATIVE_IMAGE", "true")).To(Succeed())
+		})
+
+		it.After(func() {
+			Expect(os.Unsetenv("BP_DATADOG_ENABLED")).To(Succeed())
+			Expect(os.Unsetenv("BP_NATIVE_IMAGE")).To(Succeed())
+		})
+
+		it("passes with native-image plan", func() {
+			Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{
+				Pass: true,
+				Plans: []libcnb.BuildPlan{
+					{
+						Provides: []libcnb.BuildPlanProvide{
+							{Name: "datadog-java"},
+						},
+						Requires: []libcnb.BuildPlanRequire{
+							{Name: "datadog-java"},
+						},
+					},
+				},
+			}))
+		})
+		
+	})
 }
