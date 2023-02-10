@@ -41,8 +41,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(1))
+		Expect(result.Layers).To(HaveLen(2))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
+		Expect(result.Layers[1].Name()).To(Equal("helper"))
 	})
 
 	it("contributes Java agent API >= 0.7", func() {
@@ -64,8 +65,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		result, err := datadog.Build{}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(result.Layers).To(HaveLen(1))
+		Expect(result.Layers).To(HaveLen(2))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
+		Expect(result.Layers[1].Name()).To(Equal("helper"))
 	})
 
 	it("contributes NodeJS agent API <= 0.6", func() {
