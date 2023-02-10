@@ -21,8 +21,8 @@ The buildpack will do the following for Node.js applications:
 ## Configuration
 | Environment Variable | Description
 | -------------------- | -----------
-| `$BP_DATADOG_ENABLED` | Whether to contribute JProfiler support
-| `$BPL_DATADOG_ENABLED` | Whether to enable JProfiler support
+| `$BP_DATADOG_ENABLED` | whether to contribute the Datadog trace agent
+| `$BPL_DATADOG_DISABLED` | whether to disable the Datadog trace agent (Java only!)
 
 ## Usage
 

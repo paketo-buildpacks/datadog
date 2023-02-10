@@ -32,14 +32,16 @@ api = "0.7"
   pre-package = "scripts/build.sh"
 
   [[metadata.configurations]]
-    description = "whether to enable Datadog support"
-    launch = true
-    name = "BPL_DATADOG_ENABLED"
+    build = true
+    default = "false"
+    description = "whether to contribute the Datadog trace agent"
+    name = "BP_DATADOG_ENABLED"
 
   [[metadata.configurations]]
-    build = false
-    description = "whether to contribute Datadog support"
-    name = "BP_DATADOG_ENABLED"
+    launch = true
+    default = "false"
+    description = "whether to disable the Datadog trace agent (Java only!)"
+    name = "BPL_DATADOG_DISABLED"
 
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:datadoghq:java-agent:1.6.0:*:*:*:*:*:*:*"]
