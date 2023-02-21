@@ -40,9 +40,8 @@ func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 		if err := sherpa.CopyFile(artifact, file); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to copy artifact to %s\n%w", file, err)
 		}
-
+		layer.LaunchEnvironment.Default("BPI_DATADOG_AGENT_PATH", file)
 		layer.LaunchEnvironment.Appendf("JAVA_TOOL_OPTIONS", " ", "-javaagent:%s", file)
-
 		return layer, nil
 	})
 }
