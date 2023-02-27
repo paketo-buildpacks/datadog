@@ -38,7 +38,6 @@ func (t Toggle) Execute() (map[string]string, error) {
 
 	values = append(values, fmt.Sprintf("-javaagent:%s", p))
 	java_tool_options := strings.Join(values, " ")
-	//t.Logger.Infof(color.GreenString("[Datadog toggle] JAVA_TOOL_OPTIONS: %s", java_tool_options))
 
 	return map[string]string{"JAVA_TOOL_OPTIONS": java_tool_options}, nil
 }
