@@ -44,6 +44,7 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 				},
 				Requires: []libcnb.BuildPlanRequire{
 					{Name: "datadog-nodejs"},
+					{Name: "node_modules"},
 					{Name: "node", Metadata: map[string]interface{}{"build": true}},
 				},
 			},
