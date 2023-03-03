@@ -64,6 +64,7 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 						},
 						Requires: []libcnb.BuildPlanRequire{
 							{Name: "datadog-nodejs"},
+							{Name: "node_modules"},
 							{Name: "node", Metadata: map[string]interface{}{"build": true}},
 						},
 					},
