@@ -8,7 +8,6 @@
 package datadog_test
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -64,8 +63,6 @@ func testJavaAgent(t *testing.T, context spec.G, it spec.S) {
 
 		Expect(layer.Launch).To(BeTrue())
 		Expect(filepath.Join(layer.Path, "stub-datadog-agent.jar")).To(BeARegularFile())
-		Expect(layer.LaunchEnvironment["JAVA_TOOL_OPTIONS.delim"]).To(Equal(" "))
-		Expect(layer.LaunchEnvironment["JAVA_TOOL_OPTIONS.append"]).To(Equal(fmt.Sprintf("-javaagent:%s",
-			filepath.Join(layer.Path, "stub-datadog-agent.jar"))))
+		Expect(layer.LaunchEnvironment["BPI_DATADOG_AGENT_PATH.default"]).To(Equal(filepath.Join(layer.Path, "stub-datadog-agent.jar")))
 	})
 }

@@ -3,7 +3,6 @@ package helper
 import (
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/heroku/color"
@@ -16,8 +15,8 @@ type Toggle struct {
 }
 
 func (t Toggle) Execute() (map[string]string, error) {
-	t.Logger.Infof(color.CyanString("Datadog toggle process start..."))
-	if datadogDisabled(t) {
+	t.Logger.Infof(color.CyanString("Datadog toggle process start ..."))
+	if sherpa.ResolveBool("BPL_DATADOG_DISABLED") {
 		t.Logger.Infof(color.CyanString("Datadog agent disabled by property BPL_DATADOG_DISABLED"))
 		return nil, nil
 	}
@@ -40,15 +39,4 @@ func (t Toggle) Execute() (map[string]string, error) {
 	java_tool_options := strings.Join(values, " ")
 
 	return map[string]string{"JAVA_TOOL_OPTIONS": java_tool_options}, nil
-}
-
-func datadogDisabled(t Toggle) bool {
-	val := sherpa.GetEnvWithDefault("BPL_DATADOG_DISABLED", "false")
-	disabled, err := strconv.ParseBool(val)
-	if err != nil {
-		// enable by default, but warn if we couldn't understand something
-		t.Logger.Infof("defaulting to enabling Datadog as '%s' could not be parsed as either true or false", val)
-		return false
-	}
-	return disabled
 }
