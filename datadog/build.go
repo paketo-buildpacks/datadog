@@ -36,7 +36,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 	}
 	dc.Logger = b.Logger
   
-	cr, err := libpak.NewConfigurationResolver(context.Buildpack, b.Logger)
+	cr, err := libpak.NewConfigurationResolver(context.Buildpack, &b.Logger)
 	if (err != nil) {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to create configuration resolver\n%w", err)
   }
