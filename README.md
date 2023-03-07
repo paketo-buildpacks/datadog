@@ -17,6 +17,13 @@ The buildpack will do the following for Node.js applications:
 * Contributes the Datadog Node.js trace agent to a layer
 * Require the trace agent, if it's not present
 
+
+## Configuration
+| Environment Variable | Description
+| -------------------- | -----------
+| `$BP_DATADOG_ENABLED` | whether to contribute the Datadog trace agent
+| `$BPL_DATADOG_DISABLED` | whether to disable the Datadog trace agent (Java only!)
+
 ## Usage
 
 Instructions for using the buildpack can be found at the links below:

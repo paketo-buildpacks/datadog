@@ -35,6 +35,11 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to create dependency cache\n%w", err)
 	}
 	dc.Logger = b.Logger
+  
+	cr, err := libpak.NewConfigurationResolver(context.Buildpack, &b.Logger)
+	if (err != nil) {
+		return libcnb.BuildResult{}, fmt.Errorf("unable to create configuration resolver\n%w", err)
+  }
 
 	if _, ok, err := pr.Resolve("datadog-java"); err != nil {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to resolve datadog-java plan entry\n%w", err)
@@ -44,13 +49,13 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 			return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 		}
 
-		cr, err := libpak.NewConfigurationResolver(context.Buildpack, nil)
-		if (err != nil) {
-			return libcnb.BuildResult{}, fmt.Errorf("unable to create configuration resolver\n%w", err)
-		}
 		nativeImage := cr.ResolveBool("BP_NATIVE_IMAGE")
-
 		result.Layers = append(result.Layers, NewJavaAgent(agentDependency, dc, b.Logger, nativeImage))
+
+		h, be := libpak.NewHelperLayer(context.Buildpack, "toggle")
+		h.Logger = b.Logger
+		result.Layers = append(result.Layers, h)
+		result.BOM.Entries = append(result.BOM.Entries, be)
 	}
 
 	if _, ok, err := pr.Resolve("datadog-nodejs"); err != nil {
