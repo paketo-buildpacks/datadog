@@ -53,7 +53,7 @@ func testJavaAgent(t *testing.T, context spec.G, it spec.S) {
 		}
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		j := datadog.NewJavaAgent(dep, dc, bard.NewLogger(io.Discard))
+		j := datadog.NewJavaAgent(dep, dc, bard.NewLogger(io.Discard), false)
 
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
