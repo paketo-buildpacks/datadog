@@ -26,6 +26,23 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 		return libcnb.DetectResult{Pass: false}, nil
 	}
 
+	// If both BP_DATADOG_ENABLED and BP_NATIVE_IMAGE are enabled, don't require jvm-application plan and prepare for native-image only
+	if cr.ResolveBool("BP_NATIVE_IMAGE") {
+		return libcnb.DetectResult{
+			Pass: true,
+			Plans: []libcnb.BuildPlan{
+				{
+					Provides: []libcnb.BuildPlanProvide{
+						{Name: "datadog-java"},
+					},
+					Requires: []libcnb.BuildPlanRequire{
+						{Name: "datadog-java"},
+					},
+				},
+			},
+		}, nil
+	}
+
 	return libcnb.DetectResult{
 		Pass: true,
 		Plans: []libcnb.BuildPlan{

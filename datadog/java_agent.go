@@ -21,13 +21,15 @@ import (
 type JavaAgent struct {
 	LayerContributor libpak.DependencyLayerContributor
 	Logger           bard.Logger
+	NativeImage      bool
 }
 
-func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger) JavaAgent {
+func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger, nativeImage bool) JavaAgent {
 	contrib, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
+		Build: nativeImage,
 		Launch: true,
 	})
-	return JavaAgent{LayerContributor: contrib, Logger: logger}
+	return JavaAgent{LayerContributor: contrib, Logger: logger, NativeImage: nativeImage}
 }
 
 func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
@@ -41,6 +43,9 @@ func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 			return libcnb.Layer{}, fmt.Errorf("unable to copy artifact to %s\n%w", file, err)
 		}
 
+		if (j.NativeImage) {
+			layer.BuildEnvironment.Appendf("BP_NATIVE_IMAGE_BUILD_ARGUMENTS", " ", "-J-javaagent:%s", file)
+		}
 		layer.LaunchEnvironment.Appendf("JAVA_TOOL_OPTIONS", " ", "-javaagent:%s", file)
 
 		return layer, nil
