@@ -44,14 +44,14 @@ api = "0.7"
     name = "BPL_DATADOG_DISABLED"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.15.3:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.16.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-java"
     name = "Datadog Java Agent"
-    purl = "pkg:generic/datadog-java-agent@1.15.3?arch=amd64"
-    sha256 = "93372ad671bc5d53d00af144356cb2f174a0e517501ee7ec1037d051e644a904"
+    purl = "pkg:generic/datadog-java-agent@1.16.0?arch=amd64"
+    sha256 = "aefc95d87872c7d05fc598cf273da39901140277c96ab37c4ec30afb2fd1f378"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.15.3/dd-java-agent-1.15.3.jar"
-    version = "1.15.3"
+    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.16.0/dd-java-agent-1.16.0.jar"
+    version = "1.16.0"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
