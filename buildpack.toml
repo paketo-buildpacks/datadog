@@ -58,14 +58,14 @@ api = "0.7"
       uri = "https://github.com/DataDog/dd-trace-java/blob/master/LICENSE"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:4.15.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:4.16.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-nodejs"
     name = "Datadog NodeJS Agent"
-    purl = "pkg:generic/datadog-nodejs-agent@4.15.0?arch=amd64"
-    sha256 = "60fd3b4739f3a6a7df629b97fcfb7fdb935eb2e2f4e0d32280a0c5e7846c794c"
+    purl = "pkg:generic/datadog-nodejs-agent@4.16.0?arch=amd64"
+    sha256 = "c6b02d5c63fbf64a879f0d66931283c8659bf02c9226ed51cfc6cdf40a597746"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-4.15.0.tgz"
-    version = "4.15.0"
+    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-4.16.0.tgz"
+    version = "4.16.0"
 
     [[metadata.dependencies.licenses]]
       type = "BSD-3-Clause"
