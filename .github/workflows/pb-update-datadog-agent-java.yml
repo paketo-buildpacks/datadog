@@ -46,6 +46,7 @@ jobs:
               with:
                 artifact_id: dd-java-agent
                 group_id: com.datadoghq
+                source_classifier: sources
                 uri: https://repo1.maven.org/maven2
             - name: Update Buildpack Dependency
               id: buildpack
