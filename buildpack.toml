@@ -49,6 +49,8 @@ api = "0.7"
     name = "Datadog Java Agent"
     purl = "pkg:generic/datadog-java-agent@1.21.0?arch=amd64"
     sha256 = "208e18c86185443e53ed9d10f6b87943433860bf1589c1fddb51fa2ceea405fb"
+    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.21.0/dd-java-agent-1.21.0-sources.jar"
+    source-sha256 = "74a99146433dbb798462a48358036a7a17c7c3d7b587c7a80e9f4f96d14606e1"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
     uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.21.0/dd-java-agent-1.21.0.jar"
     version = "1.21.0"
