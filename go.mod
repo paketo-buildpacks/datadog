@@ -3,10 +3,10 @@ module github.com/paketo-buildpacks/datadog
 go 1.20
 
 require (
-	github.com/buildpacks/libcnb v1.29.0
+	github.com/buildpacks/libcnb v1.30.1
 	github.com/heroku/color v0.0.6
-	github.com/onsi/gomega v1.28.0
-	github.com/paketo-buildpacks/libpak v1.67.1
+	github.com/onsi/gomega v1.28.1
+	github.com/paketo-buildpacks/libpak v1.67.2
 	github.com/sclevine/spec v1.4.0
 	github.com/stretchr/testify v1.8.4
 )
@@ -19,7 +19,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.19 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.1 // indirect
