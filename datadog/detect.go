@@ -15,7 +15,7 @@ import (
 	"github.com/paketo-buildpacks/libpak/bard"
 )
 
-type Detect struct{
+type Detect struct {
 	Logger bard.Logger
 }
 
