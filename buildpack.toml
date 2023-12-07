@@ -39,7 +39,7 @@ api = "0.7"
 
   [[metadata.configurations]]
     default = "false"
-    description = "whether to disable the Datadog trace agent (Java only!)"
+    description = "whether to disable the Datadog trace agent (non native-image Java applications only!)"
     launch = true
     name = "BPL_DATADOG_DISABLED"
 
