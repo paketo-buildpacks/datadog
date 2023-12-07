@@ -24,7 +24,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		ctx libcnb.BuildContext
 	)
 
-	it("contributes Java agent API <= 0.6", func() {
+	it("contributes Java agent API <= 0.6 and toggle", func() {
 		ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "datadog-java"})
 		ctx.Buildpack.Metadata = map[string]interface{}{
 			"dependencies": []map[string]interface{}{
@@ -46,7 +46,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 	})
 
-	it("contributes Java agent API >= 0.7", func() {
+	it("contributes Java agent API >= 0.7 and toggle", func() {
 		ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "datadog-java"})
 		ctx.Buildpack.Metadata = map[string]interface{}{
 			"dependencies": []map[string]interface{}{
@@ -68,6 +68,35 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers).To(HaveLen(2))
 		Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
+	})
+
+	context("using Native Image", func() {
+		it.Before(func() {
+			t.Setenv("BP_NATIVE_IMAGE", "true")
+		})
+
+		it("contributes Java agent API >= 0.7 only", func() {
+			ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "datadog-java"})
+			ctx.Buildpack.Metadata = map[string]interface{}{
+				"dependencies": []map[string]interface{}{
+					{
+						"id":      "datadog-agent-java",
+						"version": "1.1.1",
+						"stacks":  []interface{}{"test-stack-id"},
+						"cpes":    []interface{}{"cpe:2.3:a:datadog-agent:java-agent:1.1.1:*:*:*:*:*:*:*"},
+						"purl":    "pkg:generic/datadog-agent-java-agent@1.1.1?arch=amd64",
+					},
+				},
+			}
+			ctx.Buildpack.API = "0.7"
+			ctx.StackID = "test-stack-id"
+
+			result, err := datadog.Build{}.Build(ctx)
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(result.Layers).To(HaveLen(1))
+			Expect(result.Layers[0].Name()).To(Equal("datadog-agent-java"))
+		})
 	})
 
 	it("contributes NodeJS agent API <= 0.6", func() {

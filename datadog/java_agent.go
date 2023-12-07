@@ -26,7 +26,7 @@ type JavaAgent struct {
 
 func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger, nativeImage bool) JavaAgent {
 	contrib, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
-		Build: nativeImage,
+		Build:  nativeImage,
 		Launch: true,
 	})
 	return JavaAgent{LayerContributor: contrib, Logger: logger, NativeImage: nativeImage}
@@ -43,7 +43,7 @@ func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 			return libcnb.Layer{}, fmt.Errorf("unable to copy artifact to %s\n%w", file, err)
 		}
 
-    if (j.NativeImage) {
+		if j.NativeImage {
 			layer.BuildEnvironment.Appendf("BP_NATIVE_IMAGE_BUILD_ARGUMENTS", " ", "-J-javaagent:%s", file)
 		}
 		layer.LaunchEnvironment.Default("BPI_DATADOG_AGENT_PATH", file)
