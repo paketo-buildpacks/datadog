@@ -60,16 +60,16 @@ api = "0.7"
       uri = "https://github.com/DataDog/dd-trace-java/blob/master/LICENSE"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:5.2.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:5.3.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-nodejs"
     name = "Datadog NodeJS Agent"
-    purl = "pkg:generic/datadog-nodejs-agent@5.2.0?arch=amd64"
-    sha256 = "7e1468420cc8bd3a19232d0b0fcf32bab43ddcb78b81314fb2bc5d8546ae97f2"
-    source = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.2.0.tgz"
-    source-sha256 = "7e1468420cc8bd3a19232d0b0fcf32bab43ddcb78b81314fb2bc5d8546ae97f2"
+    purl = "pkg:generic/datadog-nodejs-agent@5.3.0?arch=amd64"
+    sha256 = "9c5395b6aa7149fbb8d7b66472b1def75f4bffdd9c306de3b9e9c157ba166f4f"
+    source = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.3.0.tgz"
+    source-sha256 = "9c5395b6aa7149fbb8d7b66472b1def75f4bffdd9c306de3b9e9c157ba166f4f"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.2.0.tgz"
-    version = "5.2.0"
+    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.3.0.tgz"
+    version = "5.3.0"
 
     [[metadata.dependencies.licenses]]
       type = "BSD-3-Clause"
