@@ -47,11 +47,11 @@ api = "0.7"
     cpes = ["cpe:2.3:a:datadoghq:java-agent:1.32.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-java"
     name = "Datadog Java Agent"
-    purl = "pkg:generic/datadog-java-agent@1.32.0?arch=amd64"
+    purl = "pkg:generic/datadog-java-agent@1.32.0"
     sha256 = "6aea8ff4a7502fa7bc8a9dab6ee1772ee7787d604fb5ba445a472833ec14a57c"
     source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.32.0/dd-java-agent-1.32.0-sources.jar"
     source-sha256 = "52d1f824d5f667f57e960dd22439a54aed536e6c252b20d0b0e47fe4bf3290a7"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.32.0/dd-java-agent-1.32.0.jar"
     version = "1.32.0"
 
@@ -63,11 +63,11 @@ api = "0.7"
     cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:5.10.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-nodejs"
     name = "Datadog NodeJS Agent"
-    purl = "pkg:generic/datadog-nodejs-agent@5.10.0?arch=amd64"
+    purl = "pkg:generic/datadog-nodejs-agent@5.10.0"
     sha256 = "44a0868336a3aed1d203fc7f2c22831033d493d5121b3c902cad7b6984b070b2"
     source = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.10.0.tgz"
     source-sha256 = "44a0868336a3aed1d203fc7f2c22831033d493d5121b3c902cad7b6984b070b2"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.10.0.tgz"
     version = "5.10.0"
 
@@ -78,12 +78,6 @@ api = "0.7"
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://github.com/DataDog/dd-trace-js/blob/master/LICENSE.Apache"
-
-[[stacks]]
-  id = "io.buildpacks.stacks.bionic"
-
-[[stacks]]
-  id = "io.paketo.stacks.tiny"
 
 [[stacks]]
   id = "*"
