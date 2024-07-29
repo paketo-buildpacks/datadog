@@ -18,6 +18,7 @@ import (
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/libpak"
 	"github.com/paketo-buildpacks/libpak/bard"
+	"github.com/paketo-buildpacks/libpak/sherpa"
 	"github.com/sclevine/spec"
 
 	"github.com/paketo-buildpacks/datadog/datadog"
@@ -63,6 +64,7 @@ func testJavaAgent(t *testing.T, context spec.G, it spec.S) {
 
 		Expect(layer.Launch).To(BeTrue())
 		Expect(filepath.Join(layer.Path, "stub-datadog-agent.jar")).To(BeARegularFile())
+		Expect(sherpa.SymlinkExists(filepath.Join(layer.Path, "dd-java-agent.jar"))).To(BeTrue())
 		Expect(layer.LaunchEnvironment["BPI_DATADOG_AGENT_PATH.default"]).To(Equal(filepath.Join(layer.Path, "stub-datadog-agent.jar")))
 	})
 }

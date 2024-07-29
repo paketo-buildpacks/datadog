@@ -10,7 +10,7 @@ This buildpack will participate if all the following conditions are met
 
 The buildpack will do the following for Java applications:
 
-* Contributes the Datadog Java agent to a layer and configures `$JAVA_TOOL_OPTIONS` or `$BP_NATIVE_IMAGE_BUILD_ARGUMENTS` to use it
+* Contributes the Datadog Java agent to a layer: `dd-java-agent-<version>.jar` and `dd-java-agent.jar` (as symlink) and configures `$JAVA_TOOL_OPTIONS` or `$BP_NATIVE_IMAGE_BUILD_ARGUMENTS` to use it.
 
 The buildpack will do the following for Node.js applications:
 

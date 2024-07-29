@@ -42,6 +42,9 @@ func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 		if err := sherpa.CopyFile(artifact, file); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to copy artifact to %s\n%w", file, err)
 		}
+		if err := os.Symlink(file, filepath.Join(layer.Path, "dd-java-agent.jar")); err != nil {
+			return libcnb.Layer{}, fmt.Errorf("unable to create symlink to %s\n%w", file, err)
+		}
 
 		if j.NativeImage {
 			layer.BuildEnvironment.Appendf("BP_NATIVE_IMAGE_BUILD_ARGUMENTS", " ", "-J-javaagent:%s", file)
