@@ -44,32 +44,32 @@ api = "0.7"
     name = "BPL_DATADOG_DISABLED"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.37.1:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.38.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-java"
     name = "Datadog Java Agent"
-    purl = "pkg:generic/datadog-java-agent@1.37.1"
-    sha256 = "87251e5cf093f52c17f6260aa6d46c0c4fd7e246468eb4c175dd0aa7ec4bb687"
-    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.37.1/dd-java-agent-1.37.1-sources.jar"
-    source-sha256 = "5230bd3f1cbe338f0b8e3961959940ba1eb302f767713f12fc772167967d99f0"
+    purl = "pkg:generic/datadog-java-agent@1.38.0"
+    sha256 = "c70de0231562f6b80db4b87455ed53ff9bc301b05376e619424ecc39c994e35f"
+    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.38.0/dd-java-agent-1.38.0-sources.jar"
+    source-sha256 = "2eedb3fa486840aebc379d73dbd331c9a7cf8fe520f3769b9e6630dbe7a745a8"
     stacks = ["*"]
-    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.37.1/dd-java-agent-1.37.1.jar"
-    version = "1.37.1"
+    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.38.0/dd-java-agent-1.38.0.jar"
+    version = "1.38.0"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://github.com/DataDog/dd-trace-java/blob/master/LICENSE"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:5.19.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:nodejs-agent:5.20.0:*:*:*:*:*:*:*"]
     id = "datadog-agent-nodejs"
     name = "Datadog NodeJS Agent"
-    purl = "pkg:generic/datadog-nodejs-agent@5.19.0"
-    sha256 = "dbdcba4065f8b85f7f0493ec3a584816125c07df306ad1b3db03fce22d13d9c1"
-    source = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.19.0.tgz"
-    source-sha256 = "dbdcba4065f8b85f7f0493ec3a584816125c07df306ad1b3db03fce22d13d9c1"
+    purl = "pkg:generic/datadog-nodejs-agent@5.20.0"
+    sha256 = "7f60073c8b18d1830cadedbe54d2914d887a451ec9886989c6c0adf9bc22123e"
+    source = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.20.0.tgz"
+    source-sha256 = "7f60073c8b18d1830cadedbe54d2914d887a451ec9886989c6c0adf9bc22123e"
     stacks = ["*"]
-    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.19.0.tgz"
-    version = "5.19.0"
+    uri = "https://registry.npmjs.org/dd-trace/-/dd-trace-5.20.0.tgz"
+    version = "5.20.0"
 
     [[metadata.dependencies.licenses]]
       type = "BSD-3-Clause"
