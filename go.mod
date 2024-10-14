@@ -3,10 +3,10 @@ module github.com/paketo-buildpacks/datadog
 go 1.23
 
 require (
-	github.com/buildpacks/libcnb v1.30.3
+	github.com/buildpacks/libcnb v1.30.4
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.34.2
-	github.com/paketo-buildpacks/libpak v1.71.0
+	github.com/paketo-buildpacks/libpak v1.72.0
 	github.com/sclevine/spec v1.4.0
 	github.com/stretchr/testify v1.9.0
 )
@@ -23,8 +23,8 @@ require (
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
-	golang.org/x/net v0.29.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
+	golang.org/x/net v0.30.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
