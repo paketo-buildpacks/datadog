@@ -44,16 +44,16 @@ api = "0.7"
     name = "BPL_DATADOG_DISABLED"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.41.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:datadoghq:java-agent:1.41.1:*:*:*:*:*:*:*"]
     id = "datadog-agent-java"
     name = "Datadog Java Agent"
-    purl = "pkg:generic/datadog-java-agent@1.41.0"
-    sha256 = "10ca69802459ba0a8dff46247e9b8b2760d76fb00b3e944ff6597657384d8dc4"
-    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.41.0/dd-java-agent-1.41.0-sources.jar"
-    source-sha256 = "864153e2e4875918fb5f00e0f627847f2a60f2e2fd21cee4bc0aed41809c63f4"
+    purl = "pkg:generic/datadog-java-agent@1.41.1"
+    sha256 = "26c43143329c2d01ce523a4a067eacbad1dcd36c6eaab4930e6513c7aa005391"
+    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.41.1/dd-java-agent-1.41.1-sources.jar"
+    source-sha256 = "36ade3a317a96c6ead6cd9c40dfb90af192d9a55ba6972e3131c2e9137dcf695"
     stacks = ["*"]
-    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.41.0/dd-java-agent-1.41.0.jar"
-    version = "1.41.0"
+    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.41.1/dd-java-agent-1.41.1.jar"
+    version = "1.41.1"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
