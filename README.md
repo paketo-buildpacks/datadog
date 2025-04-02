@@ -1,4 +1,7 @@
-# `gcr.io/paketo-buildpacks/datadog`
+# Paketo Buildpack for Datadog
+
+## Buildpack ID: `paketo-buildpacks/datadog`
+## Registry URLs: `docker.io/paketobuildpacks/datadog`
 
 The Paketo Buildpack for Datadog is a Cloud Native Buildpack that contributes and configures the Datadog Agent.
 
