@@ -1,3 +1,0 @@
-id = "datadog-agent-nodejs"
-uri = "https://localhost/stub-datadog-agent.tgz"
-sha256 = "e6417c651cc4d3fbc0ece8c715f8098106cda1a19036805fa4746db9f05b2e9a"

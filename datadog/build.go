@@ -1,8 +1,17 @@
 /*
- * Copyright 2018-2020, VMware, Inc. All Rights Reserved.
- * Proprietary and Confidential.
- * Unauthorized use, copying or distribution of this source code via any medium is
- * strictly prohibited without the express written consent of VMware, Inc.
+ * Copyright 2018-2025 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package datadog
@@ -58,18 +67,6 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 			result.Layers = append(result.Layers, h)
 			result.BOM.Entries = append(result.BOM.Entries, be)
 		}
-	}
-
-	if _, ok, err := pr.Resolve("datadog-nodejs"); err != nil {
-		return libcnb.BuildResult{}, fmt.Errorf("unable to resolve datadog-nodejs plan entry\n%w", err)
-	} else if ok {
-		dep, err := dr.Resolve("datadog-agent-nodejs", "")
-		if err != nil {
-			return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
-		}
-
-		result.Layers = append(result.Layers,
-			NewNodeJSAgent(context.Application.Path, context.Buildpack.Path, dep, dc, b.Logger))
 	}
 
 	return result, nil
