@@ -27,7 +27,3 @@ dependencies:
     group_id:    com.datadoghq
     artifact_id: dd-java-agent
     source_classifier: sources
-- id:   datadog-agent-nodejs
-  uses: docker://ghcr.io/paketo-buildpacks/actions/npm-dependency:main
-  with:
-    package: dd-trace
