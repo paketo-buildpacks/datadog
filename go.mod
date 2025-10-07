@@ -1,6 +1,8 @@
 module github.com/paketo-buildpacks/datadog
 
-go 1.24
+go 1.24.0
+
+toolchain go1.24.7
 
 require (
 	github.com/buildpacks/libcnb v1.30.4
@@ -24,8 +26,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/net v0.43.0 // indirect
-	golang.org/x/sys v0.35.0 // indirect
-	golang.org/x/text v0.28.0 // indirect
+	golang.org/x/net v0.44.0 // indirect
+	golang.org/x/sys v0.36.0 // indirect
+	golang.org/x/text v0.29.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
