@@ -2,7 +2,7 @@ module github.com/paketo-buildpacks/datadog
 
 go 1.24.0
 
-toolchain go1.24.9
+toolchain go1.24.10
 
 require (
 	github.com/buildpacks/libcnb v1.30.4
@@ -23,7 +23,7 @@ require (
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/sys v0.37.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 )
