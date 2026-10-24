@@ -37,7 +37,7 @@ func (t Toggle) Execute() (map[string]string, error) {
 	}
 
 	var values []string
-	s, ok := os.LookupEnv("JAVA_TOOL_OPTIONS")
+	s, _ := os.LookupEnv("JAVA_TOOL_OPTIONS")
 	if s == "" {
 		return nil, fmt.Errorf("disabling Datadog at launch time is unsupported for Node")
 	}
