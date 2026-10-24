@@ -62,10 +62,10 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		result.Layers = append(result.Layers, NewJavaAgent(agentDependency, dc, b.Logger, nativeImage))
 
 		if !nativeImage {
-			h, be := libpak.NewHelperLayer(context.Buildpack, "toggle")
+			h, be := libpak.NewHelperLayer(context.Buildpack, "toggle") //nolint:staticcheck // hold off on the BOM migration for now
 			h.Logger = b.Logger
 			result.Layers = append(result.Layers, h)
-			result.BOM.Entries = append(result.BOM.Entries, be)
+			result.BOM.Entries = append(result.BOM.Entries, be) //nolint:staticcheck // hold off on the BOM migration for now
 		}
 	}
 

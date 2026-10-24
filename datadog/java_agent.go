@@ -34,7 +34,7 @@ type JavaAgent struct {
 }
 
 func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache, logger bard.Logger, nativeImage bool) JavaAgent {
-	contrib, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
+	contrib, _ := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{ //nolint:staticcheck // hold off on the BOM migration for now
 		Build:  nativeImage,
 		Launch: true,
 	})
