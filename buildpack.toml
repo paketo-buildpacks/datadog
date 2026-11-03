@@ -30,23 +30,6 @@ api = "0.7"
     name = "BPL_DATADOG_DISABLED"
 
   [[metadata.dependencies]]
-    checksum = "sha256:beb620dc2e4783fd328a1ae23f8fd4fcb757ac23e5bb05efb04c6aa3e51a5e43"
-    cpe = "cpe:2.3:a:datadoghq:java-agent:1.67.1:*:*:*:*:*:*:*"
-    id = "datadog-agent-java"
-    name = "Datadog Java Agent"
-    purl = "pkg:generic/datadog-java-agent@1.67.1"
-    sha256 = "beb620dc2e4783fd328a1ae23f8fd4fcb757ac23e5bb05efb04c6aa3e51a5e43"
-    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.67.1/dd-java-agent-1.67.1-sources.jar"
-    source-checksum = "sha256:4c1e46f2d0b353ad4dd796e3d200f7d2dac5542338717c72187d99b6df61e2a7"
-    stacks = ["*"]
-    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.67.1/dd-java-agent-1.67.1.jar"
-    version = "1.67.1"
-
-    [[metadata.dependencies.licenses]]
-      type = "Apache-2.0"
-      uri = "https://github.com/DataDog/dd-trace-java/blob/master/LICENSE"
-
-  [[metadata.dependencies]]
     checksum = "sha256:b553475e2f00726cb8a7cd1c227dbe9236d4877869a85d57f4077cbc326332f4"
     cpe = "cpe:2.3:a:datadoghq:java-agent:1.68.0:*:*:*:*:*:*:*"
     id = "datadog-agent-java"
@@ -58,6 +41,23 @@ api = "0.7"
     stacks = ["*"]
     uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.68.0/dd-java-agent-1.68.0.jar"
     version = "1.68.0"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://github.com/DataDog/dd-trace-java/blob/master/LICENSE"
+
+  [[metadata.dependencies]]
+    checksum = "sha256:86c97c1348277bb024f6185c4fd15a5567c50ab648f88277dffc429adb4bf927"
+    cpe = "cpe:2.3:a:datadoghq:java-agent:1.68.1:*:*:*:*:*:*:*"
+    id = "datadog-agent-java"
+    name = "Datadog Java Agent"
+    purl = "pkg:generic/datadog-java-agent@1.68.1"
+    sha256 = "86c97c1348277bb024f6185c4fd15a5567c50ab648f88277dffc429adb4bf927"
+    source = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.68.1/dd-java-agent-1.68.1-sources.jar"
+    source-checksum = "sha256:49999a6f2fd628d0f0085755ff2815ccc9855763aa30f3b89aef5424bbbc2998"
+    stacks = ["*"]
+    uri = "https://repo1.maven.org/maven2/com/datadoghq/dd-java-agent/1.68.1/dd-java-agent-1.68.1.jar"
+    version = "1.68.1"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
